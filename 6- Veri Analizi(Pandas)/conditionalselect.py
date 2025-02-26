@@ -11,9 +11,9 @@ print(df[df["age"] > 50].count())
 print(df.loc[df["age"] > 50, ["class","age"]].head())
 print(df.loc[(df["age"] > 50) & (df["sex"]=="male"), ["class","age"]].head())
 
-print(df.loc[(df["age"] > 50) 
+df_new=df.loc[(df["age"] > 50) 
              & (df["sex"]=="male") 
-             & (df["embark_town"]=="Cherbourg"), 
-             ["class","age"]].head())
+             & ((df["embark_town"]=="Cherbourg") | (df["embark_town"] == "Southampton")), 
+             ["class","age","embark_town"]]
 
-
+df_new["embark_town"].value.counts()
